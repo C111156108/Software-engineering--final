@@ -1,0 +1,50 @@
+﻿@{
+    ViewData["Title"] = "台灣吸菸數據監測";
+}
+
+@section Styles {
+        <link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
+        <style>
+            .container, .container-fluid { padding: 0 !important; }
+            body { overflow: hidden; }
+        </style>
+}
+
+<div class="dashboard">
+    <aside class="sidebar">
+        <h4>📊 數據篩選</h4>
+        <div class="mb-3">
+            <label class="form-label">觀察對象</label>
+            <select id="popSelect" class="form-select">
+                <option value="adult">15歲以上成人 (支/日)</option>
+                <option value="highschool">高中職學生 (%)</option>
+                <option value="junior">國中學生 (%)</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">統計年份</label>
+            <select id="yearSelect" class="form-select"></select>
+        </div>
+        <div class="alert alert-danger p-2">
+            <small>全台年度平均</small>
+            <h3 id="avg-value" class="mb-0 text-center">--</h3>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <div id="map"></div>
+
+        <div class="legend">
+            <div id="legend-bar"></div>
+            <div class="legend-labels"><span>低</span><span>高</span></div>
+        </div>
+    </main>
+</div>
+
+<div id="tooltip" class="tooltip"></div>
+
+@section Scripts {
+        <script src="https://d3js.org/d3.v7.min.js"></script>
+        <script src="https://unpkg.com/topojson@3"></script>
+        <script src="~/js/script.js" asp-append-version="true"></script>
+}
